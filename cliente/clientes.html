@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Clientes · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/clientes.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="barra" id="barra"></header>
+    <nav class="menu" id="menu" aria-label="Navegación principal"></nav>
+
+    <main class="contenido">
+      <section class="encabezado">
+        <div class="encabezado__texto">
+          <h1>Clientes</h1>
+          <p id="total-clientes">Cargando…</p>
+        </div>
+        <div class="acciones">
+          <button type="button" class="boton" id="boton-nuevo">Nuevo cliente</button>
+        </div>
+      </section>
+
+      <section class="tarjeta">
+        <div class="filtros">
+          <input type="search" class="buscador" id="buscador" placeholder="Buscar por nombre o teléfono" aria-label="Buscar clientes">
+        </div>
+        <div id="lista-clientes"></div>
+        <nav class="paginacion" id="paginacion" aria-label="Paginación"></nav>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="dialogo" id="dialogo-cliente" aria-labelledby="titulo-dialogo-cliente">
+    <form id="formulario-cliente" class="formulario" novalidate>
+      <div class="dialogo__cabecera">
+        <h2 id="titulo-dialogo-cliente">Nuevo cliente</h2>
+        <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <label class="campo">
+        Nombre completo
+        <input type="text" name="nombre" required minlength="2" maxlength="120" autocomplete="name">
+      </label>
+      <label class="campo">
+        Teléfono
+        <input type="tel" name="telefono" required pattern="[0-9+ \(\)\-]{6,20}" placeholder="+53 5xxx xxxx" autocomplete="tel">
+      </label>
+      <label class="campo">
+        Dirección
+        <input type="text" name="direccion" maxlength="250" placeholder="Opcional">
+      </label>
+      <p class="formulario__error" aria-live="assertive"></p>
+      <div class="dialogo__acciones">
+        <button type="button" class="boton boton--secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="boton">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Órdenes de servicio · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/ordenes.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="barra" id="barra"></header>
+    <nav class="menu" id="menu" aria-label="Navegación principal"></nav>
+
+    <main class="contenido">
+      <section class="encabezado">
+        <div class="encabezado__texto">
+          <h1>Órdenes de servicio</h1>
+          <p id="total-ordenes">Cargando…</p>
+        </div>
+        <div class="acciones">
+          <button type="button" class="boton oculto" id="boton-nueva">Nueva orden</button>
+        </div>
+      </section>
+
+      <section class="tarjeta">
+        <div class="chips" id="chips-estado" role="tablist" aria-label="Filtrar por estado"></div>
+        <div class="filtros separado">
+          <input type="search" class="buscador" id="buscador" placeholder="Buscar por matrícula o cliente" aria-label="Buscar órdenes">
+          <select class="buscador" id="filtro-mecanico" aria-label="Filtrar por mecánico">
+            <option value="">Todos los mecánicos</option>
+          </select>
+        </div>
+        <div id="lista-ordenes"></div>
+        <nav class="paginacion" id="paginacion" aria-label="Paginación"></nav>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="dialogo" id="dialogo-orden" aria-labelledby="titulo-dialogo-orden">
+    <form id="formulario-orden" class="formulario formulario--doble" novalidate>
+      <div class="dialogo__cabecera campo--completo">
+        <h2 id="titulo-dialogo-orden">Nueva orden de servicio</h2>
+        <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <label class="campo">
+        Cliente
+        <select name="cliente" id="orden-cliente" required>
+          <option value="">Seleccione un cliente</option>
+        </select>
+        <small><a href="clientes.html?nuevo=1">¿Cliente nuevo? Regístrelo aquí</a></small>
+      </label>
+      <label class="campo">
+        Vehículo
+        <select name="vehiculo" id="orden-vehiculo" required disabled>
+          <option value="">Primero elija el cliente</option>
+        </select>
+      </label>
+      <label class="campo">
+        Mecánico asignado
+        <select name="mecanico" id="orden-mecanico" required>
+          <option value="">Seleccione un mecánico</option>
+        </select>
+      </label>
+      <label class="campo">
+        Fecha de entrada
+        <input type="datetime-local" name="fecha_entrada" id="orden-fecha" required>
+      </label>
+      <label class="campo">
+        Kilometraje de llegada
+        <input type="number" name="kilometraje" id="orden-km" min="0" step="1" inputmode="numeric">
+        <small id="orden-km-ayuda">Opcional</small>
+      </label>
+      <label class="campo campo--completo">
+        Problema reportado por el cliente
+        <textarea name="problema" required minlength="3" maxlength="1000" placeholder="Ej.: ruido al frenar, luz de motor encendida…"></textarea>
+      </label>
+      <p class="formulario__error" aria-live="assertive"></p>
+      <div class="dialogo__acciones">
+        <button type="button" class="boton boton--secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="boton">Registrar orden</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>

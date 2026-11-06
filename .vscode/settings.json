@@ -1,0 +1,11 @@
+{
+  "liveServer.settings.root": "/cliente",
+  "liveServer.settings.port": 5500,
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "files.eol": "\n",
+  "files.exclude": {
+    "servidor/pb_data": true
+  },
+  "javascript.preferences.quoteStyle": "double"
+}

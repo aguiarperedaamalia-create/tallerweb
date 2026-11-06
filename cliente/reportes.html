@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Reportes · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/reportes.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="barra" id="barra"></header>
+    <nav class="menu" id="menu" aria-label="Navegación principal"></nav>
+
+    <main class="contenido">
+      <section class="encabezado">
+        <div class="encabezado__texto">
+          <h1>Reportes</h1>
+          <p>Lo que el dueño necesita saber del taller</p>
+        </div>
+        <div class="acciones">
+          <button type="button" class="boton boton--secundario" id="boton-imprimir">Imprimir</button>
+        </div>
+      </section>
+
+      <section class="tarjeta" id="facturacion">
+        <div class="tarjeta__titulo">
+          <div>
+            <h2>Facturación por período</h2>
+            <p>Facturado: total de las órdenes entregadas · Cobrado: pagos recibidos</p>
+          </div>
+        </div>
+        <form id="formulario-periodo" class="formulario formulario--linea no-imprimir" novalidate>
+          <label class="campo">
+            Desde
+            <input type="date" name="desde" required>
+          </label>
+          <label class="campo">
+            Hasta
+            <input type="date" name="hasta" required>
+          </label>
+          <button type="submit" class="boton">Consultar</button>
+        </form>
+        <div class="chips no-imprimir separado-vertical" id="atajos-periodo">
+          <button type="button" class="chip" data-periodo="hoy">Hoy</button>
+          <button type="button" class="chip" data-periodo="semana">Últimos 7 días</button>
+          <button type="button" class="chip" data-periodo="mes">Este mes</button>
+          <button type="button" class="chip" data-periodo="anterior">Mes anterior</button>
+        </div>
+        <p class="solo-impresion" id="periodo-impreso"></p>
+        <div id="resultado-facturacion"></div>
+      </section>
+
+      <div class="rejilla rejilla--dos">
+        <section class="tarjeta" id="saldos">
+          <div class="tarjeta__titulo">
+            <div>
+              <h2>Clientes con saldo pendiente</h2>
+              <p>Lo que se debe por órdenes no canceladas</p>
+            </div>
+          </div>
+          <div id="tabla-saldos"></div>
+        </section>
+
+        <section class="tarjeta">
+          <div class="tarjeta__titulo">
+            <div>
+              <h2>Carga de trabajo por mecánico</h2>
+              <p>Órdenes abiertas en este momento</p>
+            </div>
+          </div>
+          <div id="tabla-carga"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>

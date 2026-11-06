@@ -1,0 +1,6 @@
+servidor/pb_data/
+servidor/pocketbase
+servidor/pocketbase.exe
+servidor/*.zip
+.DS_Store
+Thumbs.db

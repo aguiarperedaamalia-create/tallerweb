@@ -1,0 +1,16 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Iniciar PocketBase",
+      "type": "shell",
+      "command": "./pocketbase serve --http=0.0.0.0:8090 --publicDir=../cliente",
+      "windows": {
+        "command": ".\\pocketbase.exe serve --http=0.0.0.0:8090 --publicDir=../cliente"
+      },
+      "options": { "cwd": "${workspaceFolder}/servidor" },
+      "isBackground": true,
+      "problemMatcher": []
+    }
+  ]
+}

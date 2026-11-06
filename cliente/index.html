@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Panel · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/panel.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="barra" id="barra"></header>
+    <nav class="menu" id="menu" aria-label="Navegación principal"></nav>
+
+    <main class="contenido">
+      <section class="encabezado">
+        <div class="encabezado__texto">
+          <h1 id="saludo">Panel</h1>
+          <p id="fecha-hoy"></p>
+        </div>
+        <div class="acciones">
+          <a href="ordenes.html?nueva=1" class="boton oculto" id="boton-nueva-orden">Nueva orden</a>
+        </div>
+      </section>
+
+      <section class="kpis" id="kpis" aria-label="Indicadores"></section>
+
+      <div class="rejilla rejilla--dos">
+        <section class="tarjeta">
+          <div class="tarjeta__titulo">
+            <div>
+              <h2 id="titulo-recientes">Órdenes en curso</h2>
+              <p>Las más recientes primero</p>
+            </div>
+            <a href="ordenes.html" class="boton boton--secundario boton--chico">Ver todas</a>
+          </div>
+          <div id="recientes"></div>
+        </section>
+
+        <section class="tarjeta">
+          <div class="tarjeta__titulo">
+            <div>
+              <h2>Órdenes abiertas por estado</h2>
+              <p>Toque un estado para ver sus órdenes</p>
+            </div>
+          </div>
+          <div id="estados"></div>
+        </section>
+
+        <section class="tarjeta">
+          <div class="tarjeta__titulo">
+            <div>
+              <h2>Carga de trabajo por mecánico</h2>
+              <p>Órdenes abiertas asignadas</p>
+            </div>
+          </div>
+          <div id="carga"></div>
+        </section>
+
+        <section class="tarjeta">
+          <div class="tarjeta__titulo">
+            <div>
+              <h2>Repuestos por agotarse</h2>
+              <p>Existencias iguales o por debajo del mínimo</p>
+            </div>
+            <a href="repuestos.html?bajos=1" class="boton boton--secundario boton--chico">Inventario</a>
+          </div>
+          <div id="stock"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>

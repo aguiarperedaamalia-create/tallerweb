@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Vehículo · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/vehiculo.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="barra" id="barra"></header>
+    <nav class="menu" id="menu" aria-label="Navegación principal"></nav>
+
+    <main class="contenido">
+      <section class="encabezado">
+        <div class="encabezado__texto">
+          <a href="clientes.html" class="migas" id="enlace-propietario">← Cliente</a>
+          <h1 id="matricula">Vehículo</h1>
+          <p id="descripcion-vehiculo"></p>
+        </div>
+        <div class="acciones">
+          <button type="button" class="boton boton--secundario" id="boton-editar">Editar</button>
+          <a class="boton" id="boton-orden" href="ordenes.html">Nueva orden</a>
+        </div>
+      </section>
+
+      <section class="tarjeta" id="ficha-vehiculo">
+        <div class="esqueleto"></div>
+      </section>
+
+      <section class="tarjeta">
+        <div class="tarjeta__titulo">
+          <div>
+            <h2>Historial de servicios</h2>
+            <p>Trabajos y repuestos de cada visita</p>
+          </div>
+        </div>
+        <div id="historial"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="dialogo" id="dialogo-vehiculo" aria-labelledby="titulo-dialogo-vehiculo">
+    <form id="formulario-vehiculo" class="formulario formulario--doble" novalidate>
+      <div class="dialogo__cabecera campo--completo">
+        <h2 id="titulo-dialogo-vehiculo">Editar vehículo</h2>
+        <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <input type="hidden" name="cliente">
+      <label class="campo">
+        Matrícula
+        <input type="text" name="matricula" required pattern="[A-Za-z0-9\- ]{4,12}" autocapitalize="characters">
+      </label>
+      <label class="campo">
+        Año
+        <input type="number" name="anio" required min="1940" max="2100" step="1" inputmode="numeric">
+      </label>
+      <label class="campo">
+        Marca
+        <input type="text" name="marca" required maxlength="60">
+      </label>
+      <label class="campo">
+        Modelo
+        <input type="text" name="modelo" required maxlength="60">
+      </label>
+      <label class="campo campo--completo">
+        Kilometraje actual
+        <input type="number" name="kilometraje" min="0" step="1" inputmode="numeric">
+      </label>
+      <p class="formulario__error" aria-live="assertive"></p>
+      <div class="dialogo__acciones">
+        <button type="button" class="boton boton--secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="boton">Guardar cambios</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>

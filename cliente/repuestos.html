@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Inventario de repuestos · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/repuestos.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="barra" id="barra"></header>
+    <nav class="menu" id="menu" aria-label="Navegación principal"></nav>
+
+    <main class="contenido">
+      <section class="encabezado">
+        <div class="encabezado__texto">
+          <h1>Inventario de repuestos</h1>
+          <p id="resumen-inventario">Cargando…</p>
+        </div>
+        <div class="acciones">
+          <button type="button" class="boton oculto" id="boton-nuevo">Nuevo repuesto</button>
+        </div>
+      </section>
+
+      <section class="tarjeta">
+        <div class="filtros">
+          <input type="search" class="buscador" id="buscador" placeholder="Buscar por nombre o código" aria-label="Buscar repuestos">
+          <div class="chips">
+            <button type="button" class="chip" id="chip-bajos" aria-pressed="false">Solo por agotarse</button>
+          </div>
+        </div>
+        <div id="tabla-repuestos"></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="dialogo" id="dialogo-repuesto" aria-labelledby="titulo-dialogo-repuesto">
+    <form id="formulario-repuesto" class="formulario formulario--doble" novalidate>
+      <div class="dialogo__cabecera campo--completo">
+        <h2 id="titulo-dialogo-repuesto">Nuevo repuesto</h2>
+        <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <input type="hidden" name="id">
+      <label class="campo campo--completo">
+        Nombre
+        <input type="text" name="nombre" required maxlength="120">
+      </label>
+      <label class="campo">
+        Código
+        <input type="text" name="codigo" required pattern="[A-Za-z0-9\-]{2,30}" autocapitalize="characters" placeholder="FIL-ACE-01">
+      </label>
+      <label class="campo">
+        Precio de venta
+        <input type="number" name="precio" required min="0.01" step="0.01" inputmode="decimal">
+      </label>
+      <label class="campo">
+        Existencias
+        <input type="number" name="existencias" required min="0" step="1" value="0" inputmode="numeric">
+      </label>
+      <label class="campo">
+        Stock mínimo
+        <input type="number" name="stock_minimo" required min="0" step="1" value="2" inputmode="numeric">
+        <small>Se avisa cuando las existencias llegan a este número</small>
+      </label>
+      <p class="formulario__error" aria-live="assertive"></p>
+      <div class="dialogo__acciones">
+        <button type="button" class="boton boton--secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="boton">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog class="dialogo" id="dialogo-entrada" aria-labelledby="titulo-dialogo-entrada">
+    <form id="formulario-entrada" class="formulario" novalidate>
+      <div class="dialogo__cabecera">
+        <h2 id="titulo-dialogo-entrada">Entrada de mercancía</h2>
+        <button type="button" class="cerrar" data-cerrar aria-label="Cerrar">×</button>
+      </div>
+      <input type="hidden" name="id">
+      <p class="texto-suave sin-margen" id="detalle-entrada"></p>
+      <label class="campo">
+        Unidades recibidas
+        <input type="number" name="cantidad" required min="1" step="1" inputmode="numeric">
+      </label>
+      <p class="formulario__error" aria-live="assertive"></p>
+      <div class="dialogo__acciones">
+        <button type="button" class="boton boton--secundario" data-cerrar>Cancelar</button>
+        <button type="submit" class="boton boton--exito">Sumar al inventario</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>

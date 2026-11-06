@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Iniciar sesión · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/login.js"></script>
+</head>
+<body class="listo">
+  <main class="acceso">
+    <section class="acceso__caja">
+      <div class="acceso__marca">
+        <img src="img/logo.svg" alt="Logo de El Pistón" width="64" height="64">
+        <h1>Taller El Pistón</h1>
+        <p>Control de órdenes de servicio</p>
+      </div>
+
+      <form id="formulario-acceso" class="formulario" novalidate>
+        <label class="campo">
+          Correo
+          <input type="email" name="email" autocomplete="username" required placeholder="usuario@elpiston.cu">
+        </label>
+        <label class="campo">
+          Contraseña
+          <input type="password" name="password" autocomplete="current-password" required minlength="8">
+        </label>
+        <p class="formulario__error" aria-live="assertive"></p>
+        <button type="submit" class="boton">Entrar</button>
+      </form>
+
+      <details>
+        <summary>Cuentas de demostración</summary>
+        <p>Contraseña de todas: <code>piston2026</code></p>
+        <ul>
+          <li><code>dueno@elpiston.cu</code> · Dueño</li>
+          <li><code>recepcion@elpiston.cu</code> · Recepción</li>
+          <li><code>raul@elpiston.cu</code> · Mecánico</li>
+          <li><code>yoandry@elpiston.cu</code> · Mecánico</li>
+        </ul>
+      </details>
+    </section>
+  </main>
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#1f2933">
+  <title>Orden de servicio · El Pistón</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script type="module" src="js/paginas/orden.js"></script>
+</head>
+<body>
+  <div class="app">
+    <header class="barra" id="barra"></header>
+    <nav class="menu" id="menu" aria-label="Navegación principal"></nav>
+
+    <main class="contenido">
+      <section class="encabezado">
+        <div class="encabezado__texto">
+          <a href="ordenes.html" class="migas">← Órdenes</a>
+          <h1 id="titulo-orden">Orden de servicio</h1>
+          <p id="subtitulo-orden"></p>
+        </div>
+        <div class="acciones" id="acciones-estado"></div>
+      </section>
+
+      <p class="nota nota--info oculto" id="nota-orden"></p>
+
+      <section class="tarjeta" id="ficha-orden">
+        <div class="esqueleto"></div>
+      </section>
+
+      <div class="rejilla rejilla--orden">
+        <div class="rejilla">
+          <section class="tarjeta">
+            <div class="tarjeta__titulo">
+              <div>
+                <h2>Trabajos realizados</h2>
+                <p>Mano de obra cobrada en la orden</p>
+              </div>
+            </div>
+            <div id="tabla-trabajos"></div>
+            <form id="formulario-trabajo" class="formulario formulario--linea separado oculto" novalidate>
+              <label class="campo">
+                Trabajo
+                <input type="text" name="descripcion" required minlength="3" maxlength="200" placeholder="Ej.: cambio de aceite">
+              </label>
+              <label class="campo">
+                Mano de obra
+                <input type="number" name="precio" required min="0" step="0.01" inputmode="decimal" placeholder="0.00">
+              </label>
+              <button type="submit" class="boton">Agregar</button>
+            </form>
+          </section>
+
+          <section class="tarjeta">
+            <div class="tarjeta__titulo">
+              <div>
+                <h2>Repuestos usados</h2>
+                <p>Se descuentan del inventario al agregarlos</p>
+              </div>
+            </div>
+            <div id="tabla-repuestos"></div>
+            <form id="formulario-repuesto" class="formulario formulario--linea separado oculto" novalidate>
+              <label class="campo">
+                Repuesto
+                <select name="repuesto" id="selector-repuesto" required>
+                  <option value="">Seleccione un repuesto</option>
+                </select>
+              </label>
+              <label class="campo">
+                Cantidad
+                <input type="number" name="cantidad" id="cantidad-repuesto" required min="1" step="1" value="1" inputmode="numeric">
+              </label>
+              <button type="submit" class="boton">Agregar</button>
+            </form>
+          </section>
+        </div>
+
+        <div class="rejilla">
+          <section class="tarjeta">
+            <div class="tarjeta__titulo">
+              <h2>Resumen de cobro</h2>
+            </div>
+            <div id="resumen"></div>
+          </section>
+
+          <section class="tarjeta oculto" id="seccion-pagos">
+            <div class="tarjeta__titulo">
+              <div>
+                <h2>Pagos</h2>
+                <p>Se admiten pagos parciales</p>
+              </div>
+            </div>
+            <div id="lista-pagos"></div>
+            <form id="formulario-pago" class="formulario separado oculto" novalidate>
+              <label class="campo">
+                Monto
+                <input type="number" name="monto" id="monto-pago" required min="0.01" step="0.01" inputmode="decimal">
+              </label>
+              <label class="campo">
+                Método
+                <select name="metodo" required>
+                  <option value="efectivo">Efectivo</option>
+                  <option value="transferencia">Transferencia</option>
+                </select>
+              </label>
+              <label class="campo">
+                Nota
+                <input type="text" name="nota" maxlength="200" placeholder="Opcional">
+              </label>
+              <div class="acciones">
+                <button type="button" class="boton boton--secundario" id="boton-saldo-completo">Saldo completo</button>
+                <button type="submit" class="boton boton--exito">Registrar pago</button>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="avisos" id="avisos" aria-live="polite"></div>
+</body>
+</html>
