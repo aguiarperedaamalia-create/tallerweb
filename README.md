@@ -107,12 +107,3 @@ Un cliente tiene muchos vehículos; un vehículo tiene muchas órdenes; una orde
 13. **Tiempo real.** Las pantallas se suscriben a los cambios de PocketBase (SSE). Si recepción registra una orden, el teléfono del mecánico la ve sin recargar.
 14. **Interfaz pensada para el móvil.** El diseño parte de la pantalla del teléfono, con menú inferior y botones grandes. En pantallas anchas pasa a menú lateral y a dos columnas. Incluye diálogos nativos (`<dialog>`), validación en los formularios, esqueletos de carga, avisos y estados vacíos.
 15. **Sin dependencias externas.** El SDK está incluido en `cliente/js/lib` y se usan fuentes del sistema, así que la aplicación funciona en una red local sin internet.
-
-## Buenas prácticas aplicadas
-
-- Módulos ES con responsabilidades separadas: configuración, API, interfaz y una página por módulo.
-- `async/await` con `try/catch` en todas las llamadas al servidor. `Promise.all` para cargar datos en paralelo y `Promise.allSettled` para que, si falla una sección, las demás sigan funcionando.
-- Filtros construidos con `pb.filter()` y parámetros, nunca concatenando el texto del usuario. Todo lo que se pinta en pantalla pasa por `escapar()` para evitar XSS.
-- Las validaciones se repiten en el cliente (formularios HTML) y en el servidor (reglas, campos e índices únicos, hooks). Nunca se confía solo en el cliente.
-- Paginación en las listas, búsqueda con retardo (_debounce_) y botones bloqueados mientras se procesa una petición.
-- Mensajes de error traducidos al español y adaptados a cada caso: sin conexión, sin permiso o un campo inválido.
